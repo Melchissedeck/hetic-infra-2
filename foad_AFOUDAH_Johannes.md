@@ -27,7 +27,7 @@
 
 
 # III- Justification des choix techniques
-**1- Amazon VPC et sous-réseaux**
+**1- Amazon VPC et sous-réseaux**n/
 Le VPC offre un environnement sécurisé et isolé pour l’infrastructure. Les sous-réseaux publics hébergent les services ECS Fargate du frontend et backend, qui nécessitent un accès direct à Internet via le ELB, tandis que les sous-réseaux privés hébergent la base de données RDS Aurora, qui reste isolée pour des raisons de sécurité. Cette architecture permet également de contrôler précisément le trafic entre les services et la base de données, en utilisant des groupes de sécurité AWS.
 
 **2- Amazon ECS avec Fargate**
