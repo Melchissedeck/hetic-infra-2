@@ -1,4 +1,4 @@
-<!-- I- Sélection des composants AWS  nécéssaire pour déployer l'app -->
+# I- Sélection des composants AWS  nécéssaire pour déployer l'app
 
 1- Amazon Virtual Private Cloud (VPC) : pour créer un réseau privé isolé, permettant de mieux contrôler la sécurité et le trafic des ressources. Le VPC comporte des sous-réseaux publics et privés dans deux zones de disponibilité pour assurer la haute disponibilité et la résilience aux pannes.
 
@@ -22,11 +22,11 @@
 9- Amazon ECR (Elastic Container Registry) : pour stocker et gérer les images Docker frontend et backend, qui peuvent être directement tirées par ECS Fargate lors du déploiement.
 
 
-<!-- II- Schéma décrivant l'infrastructure à déployer -->
+# II- Schéma décrivant l'infrastructure à déployer
 ![alt text](schema_d'infrastructure_AWS.png)
 
 
-<!-- III- Justification des choix techniques -->
+# III- Justification des choix techniques
 1- Amazon VPC et sous-réseaux
 Le VPC offre un environnement sécurisé et isolé pour l’infrastructure. Les sous-réseaux publics hébergent les services ECS Fargate du frontend et backend, qui nécessitent un accès direct à Internet via le ELB, tandis que les sous-réseaux privés hébergent la base de données RDS Aurora, qui reste isolée pour des raisons de sécurité. Cette architecture permet également de contrôler précisément le trafic entre les services et la base de données, en utilisant des groupes de sécurité AWS.
 
@@ -40,5 +40,5 @@ L’ELB répartit intelligemment le trafic entre les zones de disponibilité, ga
 Aurora Serverless s’adapte automatiquement aux variations de charge, simplifiant l’administration de la base de données tout en optimisant les coûts. Hébergée dans des sous-réseaux privés, cette base de données est protégée contre des accès directs depuis Internet, tout en restant accessible par les services ECS via le VPC.
 
 
-<!-- IV- Bonus:  service AWS utilisé pour uploader les images Docker et les rendre disponibles dans le projet AWS -->
+# IV- Bonus:  service AWS utilisé pour uploader les images Docker et les rendre disponibles dans le projet AWS
 Amazone ECR : les images Docker frontend et backend ont été stockées dans Amazon Elastic Container Registry (ECR). ECR est un service managé qui facilite le stockage sécurisé des images Docker, tout en permettant à ECS Fargate de tirer directement ces images pour le déploiement. ECR garantit également la haute disponibilité des images et leur accessibilité rapide pour les clusters ECS, simplifiant le déploiement et la gestion continue des containers Docker.
