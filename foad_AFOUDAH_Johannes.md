@@ -27,16 +27,20 @@
 
 
 # III- Justification des choix techniques
-**1- Amazon VPC et sous-réseaux**n/
+**1- Amazon VPC et sous-réseaux** 
+
 Le VPC offre un environnement sécurisé et isolé pour l’infrastructure. Les sous-réseaux publics hébergent les services ECS Fargate du frontend et backend, qui nécessitent un accès direct à Internet via le ELB, tandis que les sous-réseaux privés hébergent la base de données RDS Aurora, qui reste isolée pour des raisons de sécurité. Cette architecture permet également de contrôler précisément le trafic entre les services et la base de données, en utilisant des groupes de sécurité AWS.
 
 **2- Amazon ECS avec Fargate**
+
 L’utilisation d’ECS avec Fargate dans un environnement serverless simplifie le déploiement et la gestion des containers. En ayant des clusters distincts dans chaque AZ, les services sont répliqués, assurant haute disponibilité et continuité d’activité en cas de panne d’une zone. ECS Fargate permet également de mettre à l’échelle les services en fonction de la demande, et de gérer facilement le cycle de vie des containers.
 
 **3- Elastic Load Balancer (ELB) et Amazon Route 53**
+
 L’ELB répartit intelligemment le trafic entre les zones de disponibilité, garantissant une expérience utilisateur constante même en cas de surcharge ou de panne d'une zone. Route 53 permet de gérer les DNS avec redondance et géolocalisation, simplifiant la gestion de domaine et l’acheminement du trafic.
 
 **4- Amazon RDS Aurora Serverless**
+
 Aurora Serverless s’adapte automatiquement aux variations de charge, simplifiant l’administration de la base de données tout en optimisant les coûts. Hébergée dans des sous-réseaux privés, cette base de données est protégée contre des accès directs depuis Internet, tout en restant accessible par les services ECS via le VPC.
 
 
