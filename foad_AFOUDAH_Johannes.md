@@ -23,7 +23,7 @@
 
 
 # II- Schéma décrivant l'infrastructure à déployer
-![alt text](schema_d'infrastructure_AWS.png)
+![alt text](schema_d'infrastructure_aws.png)
 
 
 # III- Justification des choix techniques
